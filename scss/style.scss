@@ -1,0 +1,15 @@
+//font variable
+$fonts-path: "../assets/fonts";
+$font-family: "vazir";
+$font-weight: 700;
+$font-style: "normal"; 
+
+
+@font-face {
+  font-family: $font-family;
+  src: url("#{$fonts-path}/vazir.eot") format("eot"),
+    url("#{$fonts-path}/vazir.ttf") format("truetype"),
+    url("#{$fonts-path}/vazir.woff") format("woff"),
+    url("#{$fonts-path}/vazir.woff2") format("woff2");
+}
+
