@@ -3,7 +3,13 @@ $fonts-path: "../assets/fonts";
 $font-family: "vazir";
 $font-weight: 700;
 $font-style: "normal"; 
+//mixins
+@mixin flex($flex:flex,$position-x:center,$position-y:center){
+    display : $flex;
+    justify-content : $position-x;
+    align-items : $position-y;
 
+}
 
 @font-face {
   font-family: $font-family;
@@ -13,3 +19,35 @@ $font-style: "normal";
     url("#{$fonts-path}/vazir.woff2") format("woff2");
 }
 
+//reset
+*{
+    font-family: $font-family;
+    direction: rtl;
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $font-family;
+}
+ul,ol,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+//public style
+.container{
+    max-width: 1170px;
+    margin: auto;
+    position: relative;
+}
+.row{
+    @include flex;
+}
+.img-fluid{
+    display: block;
+    width: 100%;
+    height: auto;
+}
