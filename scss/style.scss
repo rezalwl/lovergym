@@ -1,14 +1,26 @@
 //font variable
-$fonts-path: "../assets/fonts";
+$fonts-path: "../fonts";
 $font-family: "vazir";
 $font-weight: 700;
-$font-style: "normal"; 
+$font-style: "normal";
+$default-font-size: 16px;
+$nav-link: rgb(46, 46, 46);
+$nav-link-hover: rgb(54, 114, 228);
+$social-icons-color: #545858;
+$social-icons-color-hover: #3f3d3d;
 //mixins
-@mixin flex($flex:flex,$position-x:center,$position-y:center){
-    display : $flex;
-    justify-content : $position-x;
-    align-items : $position-y;
+@mixin flex($flex: flex, $position-x: center, $position-y: center) {
+  display: $flex;
+  justify-content: $position-x;
+  align-items: $position-y;
+}
 
+@mixin margin-padding($top, $right, $bottom, $left, $margin: true) {
+  @if ($margin) {
+    margin: $top $right $bottom $left;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
 }
 
 @font-face {
@@ -20,34 +32,92 @@ $font-style: "normal";
 }
 
 //reset
-*{
-    font-family: $font-family;
-    direction: rtl;
-    margin: auto;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  font-family: $font-family;
+  direction: rtl;
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: $font-family;
+body {
+  font-family: $font-family;
 }
-ul,ol,li{
-    list-style: none;
+ul,
+ol,
+li {
+  list-style: none;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 //public style
-.container{
-    max-width: 1170px;
-    margin: auto;
-    position: relative;
+.container {
+  max-width: 1170px;
+  margin: auto;
+  position: relative;
 }
-.row{
-    @include flex;
+.row {
+  @include flex;
 }
-.img-fluid{
-    display: block;
-    width: 100%;
-    height: auto;
+.img-fluid {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// menu style
+
+#nav {
+  .navbar {
+    font-size: $default-font-size;
+    // background-color: #ccc;
+    height: 60px;
+    @include margin-padding(24px,0 ,24px ,0 );
+    @include flex(flex, space-between, null);
+    ul {
+      li {
+        display: inline-block;
+        line-height: 60px;
+        @include margin-padding(0, 0, 0, 18px);
+        cursor: pointer;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          height: 2px;
+          background-color: #3672e4;
+          transition: width 0.5s ease;
+        }
+        &:hover::after {
+          width: 100%;
+        }
+        a {
+          color: $nav-link;
+          transition: color 0.5s ease;
+        }
+        &:hover a {
+          color: $nav-link-hover;
+        }
+      }
+    }
+    .social-icons {
+      direction: ltr;
+      @include margin-padding(0, 0, 0, 0, false);
+      a {
+        color: $social-icons-color;
+        transition: color 1s ease;
+        &:hover {
+          color: $social-icons-color-hover;
+        }
+        i{
+            @include margin-padding(0, 8px, 0, 0);
+        }
+      }
+    }
+  }
 }
