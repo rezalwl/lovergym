@@ -68,8 +68,6 @@ a {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 100% -3%;
 }
 
 // menu style
@@ -133,48 +131,120 @@ a {
   section {
     width: 100%;
     height: 83vh;
-    @include margin-padding(0, 0,0, 0);
+    @include margin-padding(0, 0, 0, 0);
     @include flex(flex, space-between, flex-start);
     .left {
       position: relative;
       @include section-creator(flex, 60%, 60%);
       height: 100%;
-      .dumbbell{
+      img {
+        object-fit: cover;
+        object-position: 100% -3%;
+      }
+      .dumbbell {
         width: 229px;
         position: absolute;
         right: -285px;
         bottom: -85px;
-        animation: lift 2s infinite linear
+        animation: lift 2s infinite linear;
       }
       @keyframes lift {
-        0%   {top:0px;}
-        50%  { top:100px;}
-        100% { top:0px;}
+        0% {
+          top: 0px;
+        }
+        50% {
+          top: 100px;
+        }
+        100% {
+          top: 0px;
+        }
       }
-      .sq-1{
+      .sq-1 {
         position: absolute;
-        top:60px;
-        left:30px;
+        top: 60px;
+        left: 30px;
         width: 40px;
         height: 40px;
-        border: 3px solid #8d8b8b51;
+        border: 3px solid #8d72e4a4;
         animation: sq-1 14s infinite linear;
-    }
-    @keyframes sq-1 {
-        100%{
-            transform: rotate(-360deg);
+      }
+      @keyframes sq-1 {
+        100% {
+          transform: rotate(-360deg);
         }
-        
+      }
     }
+    .right {
+      position: relative;
+      @include margin-padding(0, 160px, 190px, 0, false);
+      @include section-creator(flex, 40%, 40%);
+      h1 {
+        font-size: $default-font-size + 18px;
+      }
     }
-    .right{
-        position: relative;
-        @include margin-padding(0, 160px,190px, 0,false);
-        @include section-creator(flex, 40%, 40%);
-        h1{
-            font-size: $default-font-size + 18px;
+  }
+}
+
+// program style
+#program {
+  .program-section {
+    @include flex;
+    flex-direction: column;
+    @include margin-padding(80px, 0, 50px, 0);
+    position: relative;
+    .pipe {
+      width: 1200px;
+      height: 400px;
+      background: #8d72e44b;
+      position: absolute;
+      z-index: -1;
+      border-radius: 200px;
+      @include margin-padding(80px, 0, 0, 0);
+    }
+    .programs {
+      @include flex();
+      @include margin-padding(80px, 0, 20px, 0, false);
+      .program__card {
+        @include flex();
+        flex-basis: 20%;
+        flex-direction: column;
+        height: 300px;
+        margin: 10px;
+        border-radius: 7px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color .5s ease;
+        .shape {
+          border-radius: 50%;
+          margin: 30px;
+          background-color: #efefef;
+          img {
+            width: 150px;
+            height: 150px;
+          }
         }
-        
+        .description {
+          @include margin-padding(10px, 5px, 15px, 10px);
+        }
+
+        &:hover {
+          background-color: #efefef;
+        }
+      }
+    }
+    .sq-2 {
+      position: absolute;
+      top: -50px;
+      right: 250px;
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e472d1a4;
+      animation: sq-2 14s infinite linear;
+    }
+    @keyframes sq-2 {
+      100% {
+        transform: rotate(360deg);
+      }
     }
   }
 }
